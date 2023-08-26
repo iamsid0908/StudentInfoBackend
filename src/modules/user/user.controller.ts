@@ -62,7 +62,7 @@ async function sendemail(req:Request,res:Response) {
 
   const mailOptions = {
     from: process.env.EMAIL,
-    to: "chandrakarsiddharth854@gmail.com",
+    to: "info@redpositive.in",
     subject: "How beutiful day today",
     text: `Data: ${JSON.stringify(finalData, null, 2)}`,
   };
