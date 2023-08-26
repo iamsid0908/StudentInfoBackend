@@ -9,7 +9,7 @@ const app=express();
 const connectMongo = async () => {
     return new Promise((resolve, reject) => {
       mongoose
-        .connect("mongodb+srv://siddharthchandrakar007:sid@cluster0.uvqbe62.mongodb.net/", {
+        .connect(`${process.env.MONGO_DB}` , {
           autoIndex: true,
         })
         .then(() => {
@@ -29,8 +29,8 @@ app.use(express.json());
 app.use("/v1",globalRoutes);
 
 const port=8000;
-app.listen(port,()=>{
-    console.log("server is running at port "+port);
+app.listen(process.env.PORT,()=>{
+    console.log("server is running at port "+process.env.PORT);
    
     connectMongo()
 })

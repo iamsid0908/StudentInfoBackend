@@ -49,7 +49,6 @@ function sendemail(req, res) {
     return __awaiter(this, void 0, void 0, function* () {
         try {
             const data = req.body;
-            console.log(data);
             const realData = data;
             if (realData.length === 0) {
                 res.send("please add some element");

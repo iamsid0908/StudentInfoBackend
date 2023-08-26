@@ -21,7 +21,7 @@ const app = (0, express_1.default)();
 const connectMongo = () => __awaiter(void 0, void 0, void 0, function* () {
     return new Promise((resolve, reject) => {
         mongoose_1.default
-            .connect("mongodb+srv://siddharthchandrakar007:sid@cluster0.uvqbe62.mongodb.net/", {
+            .connect(`${process.env.MONGO_DB}`, {
             autoIndex: true,
         })
             .then(() => {
@@ -38,7 +38,7 @@ app.use((0, cors_1.default)());
 app.use(express_1.default.json());
 app.use("/v1", routes_1.default);
 const port = 8000;
-app.listen(port, () => {
-    console.log("server is running at port " + port);
+app.listen(process.env.PORT, () => {
+    console.log("server is running at port " + process.env.PORT);
     connectMongo();
 });
