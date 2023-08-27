@@ -13,36 +13,37 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.UserController = void 0;
-const user_model_1 = __importDefault(require("../../models/user.model"));
-const parser_1 = require("../../utils/parser");
-const user_service_1 = require("./user.service");
+const path_1 = __importDefault(require("path"));
+const UserModel = require(path_1.default.join(__dirname, '../../models/user.model'));
+const { ResponseWrapper } = require(path_1.default.join(__dirname, "../../utils/parser"));
+const { UserService } = require(path_1.default.join(__dirname, "./user.service"));
 const nodemailer = require('nodemailer');
 require('dotenv').config();
 function addUser(req, res) {
     return __awaiter(this, void 0, void 0, function* () {
         const params = req.body;
-        const response = yield user_service_1.UserService.addUser(params);
-        return parser_1.ResponseWrapper.success(res, response);
+        const response = yield UserService.addUser(params);
+        return ResponseWrapper.success(res, response);
     });
 }
 function getAllUsers(req, res) {
     return __awaiter(this, void 0, void 0, function* () {
-        const response = yield user_service_1.UserService.getAllUsers();
-        return parser_1.ResponseWrapper.success(res, response);
+        const response = yield UserService.getAllUsers();
+        return ResponseWrapper.success(res, response);
     });
 }
 function updateUsers(req, res) {
     return __awaiter(this, void 0, void 0, function* () {
         const params = req.body;
-        const response = yield user_service_1.UserService.updateUsers(params);
-        return parser_1.ResponseWrapper.success(res, response);
+        const response = yield UserService.updateUsers(params);
+        return ResponseWrapper.success(res, response);
     });
 }
 function deleteUsers(req, res) {
     return __awaiter(this, void 0, void 0, function* () {
         const param = req.params.id;
-        const response = yield user_service_1.UserService.deleteUsers(param);
-        return parser_1.ResponseWrapper.success(res, response);
+        const response = yield UserService.deleteUsers(param);
+        return ResponseWrapper.success(res, response);
     });
 }
 function sendemail(req, res) {
@@ -55,7 +56,7 @@ function sendemail(req, res) {
                 return;
             }
             console.log(realData);
-            const promises = yield realData.map((id) => user_model_1.default.findById(id));
+            const promises = yield realData.map((id) => UserModel.findById(id));
             let finalData = [];
             yield Promise.all(promises)
                 .then(results => {

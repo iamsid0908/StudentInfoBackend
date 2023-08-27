@@ -1,5 +1,6 @@
 import {Router} from "express"
-import { UserController } from "./user.controller"
+const path=require("path")
+const { UserController } =require (path.join(__dirname,"./user.controller"))
 
 const userRouter = Router()
 

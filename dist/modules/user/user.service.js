@@ -8,31 +8,29 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.UserService = void 0;
-const user_model_1 = __importDefault(require("../../models/user.model"));
+const path = require("path");
+const UserModel = require(path.join(__dirname, "../../models/user.model"));
 function addUser(params) {
     return __awaiter(this, void 0, void 0, function* () {
         console.log(params);
-        return user_model_1.default.create(params);
+        return UserModel.create(params);
     });
 }
 function getAllUsers() {
     return __awaiter(this, void 0, void 0, function* () {
-        return user_model_1.default.find({}).lean();
+        return UserModel.find({}).lean();
     });
 }
 function updateUsers(params) {
     return __awaiter(this, void 0, void 0, function* () {
-        return user_model_1.default.findOneAndUpdate({ _id: params.userId }, params.data).lean();
+        return UserModel.findOneAndUpdate({ _id: params.userId }, params.data).lean();
     });
 }
 function deleteUsers(param) {
     return __awaiter(this, void 0, void 0, function* () {
-        return user_model_1.default.findOneAndRemove({ _id: param });
+        return UserModel.findOneAndRemove({ _id: param });
     });
 }
 exports.UserService = {

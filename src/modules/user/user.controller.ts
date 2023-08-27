@@ -1,6 +1,7 @@
-import UserModel from "../../models/user.model";
-import { ResponseWrapper } from "../../utils/parser";
-import { UserService } from "./user.service"
+import path from 'path'
+const UserModel = require(path.join(__dirname, '../../models/user.model'));
+const { ResponseWrapper } = require(path.join(__dirname,"../../utils/parser"));
+const { UserService } = require(path.join(__dirname,"./user.service"));
 import { Request,Response } from "express";
 const nodemailer = require('nodemailer');
 require('dotenv').config()

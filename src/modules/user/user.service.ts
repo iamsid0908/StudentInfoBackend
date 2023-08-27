@@ -1,4 +1,5 @@
-import UserModel from "../../models/user.model";
+const path=require("path")
+const UserModel =require(path.join(__dirname, "../../models/user.model"));
 import { AddUserReq, UpdateUserReq} from "./types";
 
 

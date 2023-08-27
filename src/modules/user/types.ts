@@ -1,6 +1,5 @@
 import { User } from "../../models/interface"
 
-
 export type AddUserReq = {
     data:User
 }
